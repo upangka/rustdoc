@@ -1,0 +1,31 @@
+# 忽略 Cargo 的编译输出
+/target/
+
+# 忽略 IDE 和编辑器的临时文件
+*.swp
+*.swo
+*.tmp
+*.DS_Store
+*.log
+
+# 忽略 IntelliJ IDEA 文件
+/.idea/
+*.iml
+
+# 忽略 VS Code 文件
+/.vscode/
+
+# 忽略 Vim 交换文件
+.*.swp
+
+# 忽略 Cargo 的文档构建输出
+/doc/
+
+# 忽略测试覆盖率文件
+/coverage/
+*.profdata
+*.gcda
+*.gcno
+
+# 忽略环境变量文件
+.env
