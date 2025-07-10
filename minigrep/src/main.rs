@@ -1,5 +1,7 @@
-use std::fs;
+
 use std::{env, process};
+use minigrep::{self,Config};
+
 fn main() {
     let args: Vec<String> = env::args().collect();
     dbg!(&args);
@@ -8,28 +10,13 @@ fn main() {
         println!("Problem parsing arguments: {err}");
         process::exit(1);
     });
-}
 
-struct Config {
-    query: String,
-    file_path: String,
-}
+    println!("Searching for {}", config.query);
+    println!("In file {}", config.file_path);
 
-impl Config {
-    fn build(args: &[String]) -> Result<Self, &'static str> {
-        if args.len() < 3 {
-            return Err("Not enough arguments");
-        }
-
-        let query = args[1].clone();
-        let file_path = args[2].clone();
-        Ok(Config { query, file_path })
+    if let Err(e) = minigrep::run(config) {
+        println!("Application error: {e}");
+        process::exit(1);
     }
 }
 
-fn parse_config(args: &[String]) -> (&str, &str) {
-    let query = &args[1];
-    let file_path = &args[2];
-
-    (query, file_path)
-}
