@@ -291,6 +291,10 @@ name = "minigrep"
 version = "0.1.0"
 
 [[package]]
+name = "n-closure"
+version = "0.1.0"
+
+[[package]]
 name = "ole32-sys"
 version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
