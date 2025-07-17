@@ -26,17 +26,18 @@ fn get_config(value: Option<ServerConfig>) -> ServerConfig {
 }
 
 fn main() {
+    
     // 默认配置
     let default_cfg = ServerConfig::default();
     println!("默认配置：{default_cfg:#?}");
-    
+
     let custom_cfg = ServerConfig{
         port: 5173,
         ..ServerConfig::default()
     };
-    
+
     println!("自定义配置: {custom_cfg:#?}");
-    
+
     // 结合 Option
     let cfg = get_config(None);
     println!("处理后的配置: {cfg:#?}");
