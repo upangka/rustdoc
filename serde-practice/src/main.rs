@@ -1,15 +1,18 @@
+mod json;
+
 use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
-
-#[derive(Debug, Deserialize)]
-struct User {
-    name: String,
-    age: u8,
-}
 
 
 fn main(){
 
+}
+
+/// 基础反序列化 JSON 为 struct
+#[derive(Debug, Deserialize)]
+struct User {
+    name: String,
+    age: u8,
 }
 
 #[test]
@@ -19,7 +22,7 @@ fn basic() {
     println!("{:?}", user);
 }
 
-
+/// 缺失字段 + #[serde(default)]
 #[derive(Debug, Deserialize)]
 struct Config {
     #[serde(default)]
@@ -27,15 +30,6 @@ struct Config {
 
     #[serde(default)]
     env_vars: HashMap<String, String>,
-}
-
-impl Default for Config{
-    fn default() -> Self {
-        Config {
-            debug: true,
-            env_vars: HashMap::new(),
-        }
-    }
 }
 
 #[test]
@@ -46,7 +40,7 @@ fn test_default() {
 }
 
 
-
+/// 结构体整体默认值（需要 derive(Default)）
 #[derive(Debug, Deserialize, Default)]
 struct AppConfig {
     #[serde(default)]
@@ -69,7 +63,7 @@ fn test_struct() {
 }
 
 
-
+/// 🛠️ Demo 5：字段重命名 + 忽略字段
 #[derive(Debug, Deserialize)]
 struct Person {
     #[serde(rename = "userName")]
