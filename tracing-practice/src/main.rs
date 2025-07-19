@@ -1,14 +1,11 @@
 use tracing_practice::utils;
-use tracing_subscriber::EnvFilter;
+use tracing_subscriber::{EnvFilter, layer::SubscriberExt, util::SubscriberInitExt};
 
 fn main() {
-    // 初始化全局日志订阅者
-    // tracing_subscriber::fmt()
-    //     .with_env_filter(EnvFilter::from_default_env()) // 支持通过环境变量设置日志级别
-    //     .init();
 
-    tracing_subscriber::fmt()
-        .with_env_filter(
+    tracing_subscriber::registry()
+        .with(tracing_subscriber::fmt::layer())
+        .with(
             EnvFilter::try_from_default_env()
                 .unwrap_or_else(|_| "tracing_practice=info,tracing_practice::utils=debug".into()),
         )
@@ -20,4 +17,18 @@ fn main() {
     tracing::warn!("main入口 warn");
 
     utils::do_something();
+    
+    test_str();
+}
+
+
+fn test_str(){
+    
+    
+    let s = "hello";
+    let s1 = String::from(s);
+    
+    let s2:&str = s.into();
+    let s3: String = s.into();
+    println!("{s} {s1} {s2} {s3}");
 }
