@@ -1,5 +1,10 @@
-use axum::{Json, Router, routing::get, routing::post, response::{IntoResponse, Response},};
 use axum::http::StatusCode;
+use axum::{
+    Json, Router,
+    response::{IntoResponse, Response},
+    routing::get,
+    routing::post,
+};
 use serde::{Deserialize, Serialize};
 use tower_http::trace::TraceLayer;
 use tracing::info;
@@ -22,7 +27,9 @@ async fn main() {
         .layer(TraceLayer::new_for_http());
 
     // run our app with hyper, listening globally on port 3000
-    let listener = tokio::net::TcpListener::bind("localhost:3000").await.unwrap();
+    let listener = tokio::net::TcpListener::bind("localhost:3000")
+        .await
+        .unwrap();
     axum::serve(listener, app).await.unwrap();
 }
 
@@ -30,20 +37,19 @@ async fn hello_handler() -> &'static str {
     "Hello, World!"
 }
 
-#[derive(Debug, Deserialize,Serialize)]
+#[derive(Debug, Deserialize, Serialize)]
 struct NewUser {
     email: String,
     username: String,
 }
 
-
-#[derive(Debug,Clone)]
+#[derive(Debug, Clone)]
 pub struct HttpError {
     pub message: String,
     pub status: StatusCode,
 }
 
-impl Default for HttpError{
+impl Default for HttpError {
     fn default() -> Self {
         HttpError {
             message: "".to_string(),
@@ -58,19 +64,19 @@ impl IntoResponse for HttpError {
     }
 }
 
-
-
-async fn create_user(Json(payload): Json<NewUser>) -> Result<impl IntoResponse,HttpError> {
+async fn create_user(Json(payload): Json<NewUser>) -> Result<impl IntoResponse, HttpError> {
     info!("Got a request: {:#?}", payload);
     Ok(Json(payload))
 }
 
-
 #[test]
-fn test(){
-    let a = (StatusCode::INTERNAL_SERVER_ERROR,Json(NewUser{
-        email: "".to_string(),
-        username: "".to_string(),
-    }));
+fn test() {
+    let a = (
+        StatusCode::INTERNAL_SERVER_ERROR,
+        Json(NewUser {
+            email: "".to_string(),
+            username: "".to_string(),
+        }),
+    );
     a.into_response();
 }

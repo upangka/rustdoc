@@ -1,13 +1,10 @@
-
-
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 use serde_json::Value;
 use std::fs::File;
 use std::io::Read;
 
 fn read_config_file(path: &str) -> Result<String> {
-    let mut file = File::open(path)
-        .with_context(|| format!("无法打开配置文件: {}", path))?; // 加 context，定位文件打开错误
+    let mut file = File::open(path).with_context(|| format!("无法打开配置文件: {}", path))?; // 加 context，定位文件打开错误
     let mut contents = String::new();
     file.read_to_string(&mut contents)
         .context("读取配置文件内容失败")?; // 加 context，定位文件读取错误
@@ -15,8 +12,7 @@ fn read_config_file(path: &str) -> Result<String> {
 }
 
 fn parse_config(data: &str) -> Result<Value> {
-    serde_json::from_str(data)
-        .context("解析配置文件失败") // 加 context，定位 JSON 解析错误
+    serde_json::from_str(data).context("解析配置文件失败") // 加 context，定位 JSON 解析错误
 }
 
 fn extract_api_key(json: &Value) -> Result<String> {
@@ -39,8 +35,8 @@ fn test() -> Result<()> {
 
     let data = read_config_file(path)?;
     let json = parse_config(&data)?;
-    
-    println!("{:#?}",json);
+
+    println!("{:#?}", json);
     let api_key = extract_api_key(&json)?;
     send_request(&api_key)?;
 

@@ -1,5 +1,5 @@
 mod animal;
-use crate::animal::{Animal,Sheep,Cow};
+use crate::animal::{Animal, Cow, Sheep};
 fn main() {
     let random_number = 0.234;
     // let animal = random_animal(random_number);
@@ -8,10 +8,12 @@ fn main() {
     println!("\n=== 内存大小对比 ===");
     println!("Sheep size: {} bytes", std::mem::size_of::<Sheep>());
     println!("Cow size: {} bytes", std::mem::size_of::<Cow>());
-    println!("Box<dyn Animal> size: {} bytes", std::mem::size_of::<Box<dyn Animal>>());
+    println!(
+        "Box<dyn Animal> size: {} bytes",
+        std::mem::size_of::<Box<dyn Animal>>()
+    );
     // Box<dyn Animal> 的大小是固定的，不管里面装的是什么类型
 }
-
 
 // fn random_animal(random_number: f64) -> Box<dyn Animal>{
 //     if random_number < 0.5{

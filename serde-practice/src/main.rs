@@ -1,12 +1,9 @@
 mod json;
 
-use std::collections::HashMap;
 use serde::{Deserialize, Serialize};
+use std::collections::HashMap;
 
-
-fn main(){
-
-}
+fn main() {}
 
 /// 基础反序列化 JSON 为 struct
 #[derive(Debug, Deserialize)]
@@ -39,7 +36,6 @@ fn test_default() {
     println!("{:?}", config);
 }
 
-
 /// 结构体整体默认值（需要 derive(Default)）
 #[derive(Debug, Deserialize, Default)]
 struct AppConfig {
@@ -62,7 +58,6 @@ fn test_struct() {
     println!("{:?}", req);
 }
 
-
 /// 🛠️ Demo 5：字段重命名 + 忽略字段
 #[derive(Debug, Deserialize)]
 struct Person {
@@ -80,7 +75,6 @@ fn test_rename() {
 
     println!("{:?}", person);
 }
-
 
 #[derive(Serialize)]
 struct Student {

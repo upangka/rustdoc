@@ -1,16 +1,13 @@
-
-struct Sheep{
+struct Sheep {
     pub name: String,
 }
 
-impl Sheep{
-    fn new(name: String) -> Self{
-        Sheep{
-            name
-        }
+impl Sheep {
+    fn new(name: String) -> Self {
+        Sheep { name }
     }
-    
-    fn noise(self: &Self){
+
+    fn noise(self: &Self) {
         println!("{} mie mie mie", self.name);
     }
 }

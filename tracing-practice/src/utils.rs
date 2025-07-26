@@ -1,4 +1,4 @@
-use tracing::{info, debug};
+use tracing::{debug, info};
 
 pub fn do_something() {
     info!("utils 模块 info 日志");

@@ -8,5 +8,5 @@ fn tuple() {
     println!("x:{x},y:{y},z:{z}");
 
     // 通过下标
-    println!("x:{},y:{},z:{}",tup.0,tup.1,tup.2);
+    println!("x:{},y:{},z:{}", tup.0, tup.1, tup.2);
 }

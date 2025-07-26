@@ -11,5 +11,5 @@ fn main() {
 
     let list = vec![1, 2, 3];
     println!("1: {list:?}");
-    println!("2: {:?}",&list);
+    println!("2: {:?}", &list);
 }

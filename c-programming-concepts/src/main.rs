@@ -1,8 +1,8 @@
+mod func;
+mod mut_reference;
+mod reference;
 mod shadowing;
 mod tuple;
-mod func;
-mod reference;
-mod mut_reference;
 
 fn main() {
     let mut x = 5;

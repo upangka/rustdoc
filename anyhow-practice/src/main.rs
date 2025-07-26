@@ -1,21 +1,20 @@
 mod read_file;
 
-use anyhow::{anyhow, Context, Result};
+use anyhow::{Context, Result, anyhow};
 
-fn main() -> Result<()>{
+fn main() -> Result<()> {
     println!("Hello, world!");
     // context 简单字符串
-     might_fail(false).context("might_fail() failed")?;
+    might_fail(false).context("might_fail() failed")?;
     // with_context 动态生成上下文信息
-     might_fail(false).with_context(|| "might_fail() failed")?;
+    might_fail(false).with_context(|| "might_fail() failed")?;
     Ok(())
 }
 
-
 fn might_fail(succeed: bool) -> Result<()> {
-    if succeed{
+    if succeed {
         Ok(())
-    }else{
+    } else {
         Err(anyhow!("可能发生的错误"))
     }
 }
