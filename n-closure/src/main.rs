@@ -1,3 +1,5 @@
+mod basic;
+
 fn main() {
     // 没有声明类型
     let example_closure = |x| x;
