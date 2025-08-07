@@ -108,3 +108,11 @@ fn test_vec() -> Result<(), Box<dyn std::error::Error>> {
     println!("b = {}", b); // b = 5
     Ok(())
 }
+
+#[test]
+fn test_move() {
+    let  x = vec![1,2,3];
+    let y = &x[1];
+    // *y = 666;
+    println!("x = {:?}", x); // x = [1, 666, 3]
+}
