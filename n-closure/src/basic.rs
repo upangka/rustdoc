@@ -1,4 +1,5 @@
 use std::fs::File;
+use std::ops::Add;
 
 #[test]
 fn test_format() {
@@ -69,8 +70,7 @@ fn test_alias() {
     println!("Third element is {}", *num);
 }
 
-
-fn test_mut(){
+fn test_mut() {
     let x = 10;
     let mut y1 = &x; // y1 是可变的引用变量，但引用的是不可变的 x
 
@@ -87,9 +87,24 @@ fn test_mut(){
 }
 
 #[test]
-fn test_vec(){
+fn test_vec() -> Result<(), Box<dyn std::error::Error>> {
     let mut v = vec![1, 2, 3];
-    let num = &v[0];
-    let num2 = &v[0];
+    // 声明为let mut 的变量，可以修改
+    let mut num = &mut v[0];
 
+    // 指定类型，进行强制转化
+    let mut b: &mut i32 = &mut "3".parse()?;
+
+    let a = &mut b;
+    // **a += 1;
+    *b = a.add(1); // 隐式解引用
+    println!("b = {}", b); // b = 4
+
+    // 所有权转移给num，因为num 声明的是let mut所以可以重新赋值
+    num = b;
+    *num += 1;
+
+    // 此时num生命周期结束，b重新拥有所有权
+    println!("b = {}", b); // b = 5
+    Ok(())
 }
