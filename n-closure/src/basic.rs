@@ -111,8 +111,65 @@ fn test_vec() -> Result<(), Box<dyn std::error::Error>> {
 
 #[test]
 fn test_move() {
-    let  x = vec![1,2,3];
-    let y = &x[1];
-    // *y = 666;
-    println!("x = {:?}", x); // x = [1, 666, 3]
+    let  mut x = vec![1,2,3];
+    let y = &x[1];  // 创建不可引用，共享引用
+
+    println!("x = {:?}", x); // ✅ 此时x仍然有读的权限
+    println!("y = {:?}", y);
+}
+
+
+
+#[test]
+fn test_string(){
+    let name = String::from("Hello World");
+    let mut x = name;
+    x.push_str(":)");
+    println!("{}", x)
+}
+
+
+#[test]
+fn test_tuple(){
+    let mut name = (
+        String::from("Ferris"),
+        String::from("Rustacean")
+    );
+    let first = &name.0;
+    name.1.push_str(", Esq.");
+    println!("{first} {}", name.1);
+}
+
+
+#[test]
+fn test_split(){
+    let a = [0, 1, 2, 3];
+
+    let b = &a[1..2];
+    let c = (*b)[1];
+    let d = a[1];
+
+}
+
+#[test]
+fn test_mut_stack(){
+    
+    fn incr(x: &mut i32) {
+        *x += 1;
+    }
+    
+    let mut x = 10;
+    incr(&mut x);
+    println!("x = {}", x)
+}
+
+#[test]
+fn test_str_slice(){
+    let s = String::from("hello world");
+
+    let hello: &str = &s[0..5];
+    let world: &str = &s[6..11];
+    let s2: &String = &s;
+    
+    println!("hello = {}, world = {}, s2 = {}", hello, world, s2)
 }
