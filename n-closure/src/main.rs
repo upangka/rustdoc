@@ -1,5 +1,6 @@
 mod basic;
 mod range;
+mod summary;
 
 fn main() {
     // 没有声明类型
