@@ -153,11 +153,11 @@ fn test_split(){
 
 #[test]
 fn test_mut_stack(){
-    
+
     fn incr(x: &mut i32) {
         *x += 1;
     }
-    
+
     let mut x = 10;
     incr(&mut x);
     println!("x = {}", x)
@@ -168,8 +168,9 @@ fn test_str_slice(){
     let s = String::from("hello world");
 
     let hello: &str = &s[0..5];
+    print!("{hello}");
     let world: &str = &s[6..11];
     let s2: &String = &s;
-    
+
     println!("hello = {}, world = {}, s2 = {}", hello, world, s2)
 }
