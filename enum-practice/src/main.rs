@@ -15,10 +15,21 @@ impl Message {
     }
 }
 
-
-
-
-fn main() {
+fn main_22() {
     let message = Message::Move { x: 1, y: 2 };
     message.call();
+}
+
+fn do_something() {
+    println!("Doing something...");
+    // 隐式返回 ()
+}
+
+fn main() {
+    let x = (); // 单位值
+    println!("Unit value: {:?}", x);
+
+    let y = do_something(); // 返回单位值
+    println!("Return from function: {:?}", y); // Return from function: ()
+
 }

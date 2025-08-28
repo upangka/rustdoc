@@ -14,11 +14,15 @@ fn test_one() {
 fn test_fix_two() {
     let opt: Option<String> = Some(String::from("Hello world"));
 
+    
+
     match &opt {
         // _ became s
         Some(s) => println!("Some: {}", s),
         None => println!("None!"),
     };
 
-    println!("{:?}", opt); 
+    println!("{:?}", opt);
 }
+
+
