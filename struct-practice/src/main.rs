@@ -1,8 +1,9 @@
+mod derive_trait;
 mod unit_like;
 
 struct Point {
     x: i32,
-    y: i32
+    y: i32,
 }
 impl Point {
     fn get_x(&mut self) -> &mut i32 {
@@ -10,10 +11,8 @@ impl Point {
     }
 }
 
-struct Color(i32, i32,i32);
+struct Color(i32, i32, i32);
 fn main() {
-
-
     let black = Color(0, 0, 0);
     let Color(r, g, b) = black;
 
@@ -36,5 +35,4 @@ fn main() {
     fn add_fancy_hat() {}
     fn remove_fancy_hat() {}
     fn move_player(num_spaces: u8) {}
-
 }

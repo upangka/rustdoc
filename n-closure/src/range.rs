@@ -35,7 +35,7 @@ fn test_other_slice() {
 }
 
 #[test]
-fn test_slice_size(){
+fn test_slice_size() {
     println!(
         "&String={} &str={}",
         std::mem::size_of::<&String>(),

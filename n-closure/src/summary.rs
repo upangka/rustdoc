@@ -19,8 +19,7 @@ fn inner(x: &mut i32) {
     *x += 5;
 }
 
-
-fn test_drop(){
+fn test_drop() {
     let v = vec![1, 2, 3];
     let v_ref: &Vec<i32> = &v;
     // *v_ref操作会尝试移动所有权
