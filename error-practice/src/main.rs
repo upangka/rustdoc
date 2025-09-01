@@ -1,4 +1,6 @@
 mod quote;
+mod our_error;
+mod question_with_option;
 
 use std::fs::File;
 

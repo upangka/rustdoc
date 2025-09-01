@@ -20,6 +20,7 @@ fn read_username_from_file_v1() -> Result<String, io::Error> {
     }
 }
 
+// 使用?简化match控制流程的处理流程
 fn read_username_from_file_v2() -> Result<String, io::Error> {
     let mut username = String::new();
     // File
@@ -31,6 +32,7 @@ fn read_username_from_file_v2() -> Result<String, io::Error> {
     Ok(username)
 }
 
+// ?允许链式调用
 fn read_username_from_file_v3() -> Result<String, io::Error> {
     let mut username = String::new();
     File::open("hello.txt")?.read_to_string(&mut username)?;
