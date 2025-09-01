@@ -42,3 +42,56 @@ fn test_reference_value(){
     // 上面的作用域结束之后，key就消失了
     // println!("{:?}", map)
 }
+
+
+#[test]
+fn update_element(){
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    scores.insert(String::from("Blue"), 20);
+    println!("{:?}", scores); // {"Blue": 20}
+}
+
+
+#[test]
+fn test_entry(){
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    // "Yellow"不存在，插入“Yellow”-> 50 健值对
+    scores.entry(String::from("Yellow")).or_insert(50);
+    // "Blue"已存在，不做任何处理
+    scores.entry(String::from("Blue")).or_insert(50);
+    println!("{:?}", scores); // {"Blue": 10, "Yellow": 50}
+}
+
+#[test]
+fn test_update_base_old_value(){
+    let text = String::from("hello world wonderful world");
+    // 类型的推断 HashMap<&str,i32>
+    let mut map = HashMap::new();
+    for word in text.split_whitespace(){
+        // &mut i32
+       let count =  map.entry(word).or_insert(0);
+        *count += 1;
+    }
+    println!("{:#?}", map)
+}
+// output:
+// {
+// "hello": 1,
+// "wonderful": 1,
+// "world": 2,
+// }
+
+
+#[test]
+fn test_access_by_key(){
+    let mut scores = HashMap::new();
+    scores.insert(String::from("Blue"), 10);
+    let v1 = &scores["Blue"];
+    println!("{v1}");
+
+    // 当key不在的时候会直接 panic
+    let v1 = &scores["Red"];
+    println!("{v1}")
+}
