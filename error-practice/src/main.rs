@@ -33,3 +33,11 @@ fn main_test() {
     });
 }
 
+
+
+fn test_sugar() -> Result<String,Box<dyn Error>> {
+
+    let e: Result<String, Box<dyn Error>> = Ok("Pkmer".to_string());
+    let result = e?;
+    Ok(result)
+}
