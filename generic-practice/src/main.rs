@@ -1,3 +1,5 @@
+mod display;
+
 fn main() {
     let vec = vec![34, 50, 25, 100, 65];
     let array = [1, 2, 3, 4];
@@ -28,3 +30,5 @@ fn largest_i32(list: &[i32]) -> &i32 {
 
     largest
 }
+
+
