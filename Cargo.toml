@@ -1,3 +1,3 @@
 [workspace]
 resolver = "3"
-members = ["a-getting-start", "anyhow-practice", "axum-practice", "b-guessing-game", "backyard", "c-programming-concepts", "d-ownership", "default-trait", "dyn-practice", "enum-practice", "error-handling", "error-practice", "hashmap-practice", "minigrep", "n-closure", "option-practice", "reqwest-practice", "serde-practice", "smart-pointer", "string-practice", "struct-practice", "tracing-practice", "understand-trait", "vect-practice"]
+members = ["a-getting-start", "anyhow-practice", "axum-practice", "b-guessing-game", "backyard", "c-programming-concepts", "d-ownership", "default-trait", "dyn-practice", "enum-practice", "error-handling", "error-practice", "generic-practice", "hashmap-practice", "minigrep", "n-closure", "option-practice", "reqwest-practice", "serde-practice", "smart-pointer", "string-practice", "struct-practice", "tracing-practice", "understand-trait", "vect-practice"]
