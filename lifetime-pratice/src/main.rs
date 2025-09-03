@@ -7,6 +7,7 @@
 mod dangerling_reference;
 mod struct_demo;
 mod lifetime_elision;
+mod anoymos;
 
 pub fn hello() -> &'static str {
     "Hello, World!"
