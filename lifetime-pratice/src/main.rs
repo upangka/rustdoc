@@ -4,6 +4,9 @@
 //     println!("{}",reverse_v2("Hello, world!"))
 // }
 
+mod dangerling_reference;
+mod struct_demo;
+mod lifetime_elision;
 
 pub fn hello() -> &'static str {
     "Hello, World!"
