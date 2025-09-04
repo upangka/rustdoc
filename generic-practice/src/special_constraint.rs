@@ -82,9 +82,8 @@ fn test_apply_curve() {
     println!("{:?}", test_result) // TestResult { scores: [3, 4, 5], curve: Some(1) }
 }
 
-
 #[test]
-fn test_vec_iter_mut(){
+fn test_vec_iter_mut() {
     let mut v = vec![100, 32, 57];
     // i此时的类型为 &mut i32
     for i in &mut v {
@@ -98,4 +97,20 @@ fn test_vec_iter_mut(){
         *i += 50;
     }
     println!("{:?}", v);
+}
+
+fn find_nth<T: Ord + Clone>(elems: &[T], n: usize) -> T {
+    // // 创建一个包含引用的向量
+    let mut elem_refs: Vec<&T> = elems.iter().collect();
+    // 对引用向量进行排序
+    elem_refs.sort();
+    let t = elem_refs[n];
+    t.clone()
+}
+
+#[test]
+fn test_find_nth() {
+    let v = vec![2, 3, 1, 5, 4];
+    println!("{}", find_nth(&v, 2)); // 3
+    println!("{:?}", v); // [2, 3, 1, 5, 4]
 }
